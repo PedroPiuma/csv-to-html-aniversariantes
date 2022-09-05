@@ -1,0 +1,16 @@
+{
+  "name": "formatador-aniversariantes",
+  "version": "1.0.0",
+  "description": "Script destinado a formatação de tabelas de aniversariantes para arquivo html",
+  "main": "formatador-aniversariantes.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node formatador-aniversariantes.js && open conteudo-final.html"
+  },
+  "keywords": [
+    "aniversariantes"
+  ],
+  "author": "Luís Pedro Piúma <luis.pedro@essentialnutrition.com.br>",
+  "license": "ISC"
+}
