@@ -15,8 +15,10 @@ const formatText = text => {
     const objectPerson = text.split(',,\r\n').map(person => person.split(',').filter(el => el !== ''))
     const createRows = () => objectPerson.map((el, index) => {
         const [person, birthday, sector, local] = el
-        const firstName = upperCaseFormatterName(person.split(' ').filter(word => word !== '').shift().toLowerCase())
-        const lastName = upperCaseFormatterName(person.split(' ').filter(word => word !== '').pop().toLowerCase())
+        const names = person.split(' ').filter(word => word !== '')
+        const firstName = upperCaseFormatterName(names[0].toLowerCase())
+        const lastName = upperCaseFormatterName(names[names.length - 1].toLowerCase())
+        const conectorName = names[names.length - 2].length === 2 ? names[names.length - 2].toLowerCase() : false
         const sectorName = upperCaseFormatterSector(sector)
         const localName = upperCaseFormatterLocal(local)
         if (index === 0) {
@@ -24,7 +26,7 @@ const formatText = text => {
             htmlTextInfos += '<tr>'
         }
         htmlTextImages += createPhoto(firstName, lastName)
-        htmlTextInfos += createPersonDescription(firstName, lastName, sectorName, localName, Number(birthday.slice(0, 2)))
+        htmlTextInfos += createPersonDescription(firstName, conectorName ? `${upperCaseFormatterName(conectorName)} ${lastName}` : lastName, sectorName, localName, Number(birthday.slice(0, 2)))
         if ((index + 1) % 4 === 0 && index !== objectPerson.length - 1) {
             htmlTextImages += '</tr>|<tr>'
             htmlTextInfos += '</tr>|<tr>'
