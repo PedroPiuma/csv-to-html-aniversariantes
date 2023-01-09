@@ -43,6 +43,7 @@ const formatText = (text) => {
         .replace("Liquidos", "Líquidos")
         .replace("Laboratório Injetáveis", "Laboratório de Injetáveis")
         .replace("Laboraório Injetáveis", "Laboratório de Injetáveis")
+        .replace("Laboratorio", "Laboratório")
       const localName = upperCaseFormatterLocal(local.trim())
       if (index === 0) {
         htmlTextImages += "<tr>"
