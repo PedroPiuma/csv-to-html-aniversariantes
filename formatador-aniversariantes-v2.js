@@ -4,7 +4,7 @@ const imgDeadline = "https://essentialnutrition-upload-files.s3.amazonaws.com/em
 const imgString = (firstName, lastName) => {
   return `<img style="width: 120px; height: 160px; display: block; margin: 0; border-radius: 10%; border: 1px solid #ab9b6a; "
 src="${imgDeadline}${firstName.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}${lastName.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}.jpg"
-alt="${firstName + lastName}" title="${firstName + lastName}" />`
+alt="${firstName} ${lastName}" title="${firstName} ${lastName}" />`
 }
 const paragraph = (firstName, lastName, sector, local, birthday) => {
   return `<p
@@ -45,9 +45,15 @@ const formatText = (text) => {
     const sectorName = upperCaseFormatterSector(sector.trim())
       .replace("Injetaveis", "Injetáveis")
       .replace("Liquidos", "Líquidos")
+      .replace("Laboratorio", "Laboratório")
+      .replace("Hormonios", "Hormônios")
       .replace("Laboratório Injetáveis", "Laboratório de Injetáveis")
       .replace("Laboraório Injetáveis", "Laboratório de Injetáveis")
-      .replace("Laboratorio", "Laboratório")
+      .replace("Laboratório Injetáveis", "Laboratório de Injetáveis")
+      .replace("LABORATORIO INJETAVEIS", "Laboratório de Injetáveis")
+      .replace("Tecnologia da Informação", "T.I.")
+      .replace("Pesquisa e Desenvolvimento", "P&D")
+    console.log(sectorName)
     const localName = upperCaseFormatterLocal(local.trim())
 
     htmlTextFinal += `<div style="display: inline-block; width: 140px; vertical-align: top;"> ${imgString(firstName, lastName)}${paragraph(
